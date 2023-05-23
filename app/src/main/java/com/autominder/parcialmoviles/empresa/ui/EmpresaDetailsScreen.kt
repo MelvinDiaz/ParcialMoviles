@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
@@ -17,10 +18,10 @@ fun EmpresaDetailsScreen(
 ) {
 
     Column(
-        modifier = Modifier.padding(8.dp)
+        modifier = Modifier.padding(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(text = empresa.name)
-        Text(text = empresa.sector)
-
+        Text(text = "Nombre de la empresa = ${empresa.name}")
+        Text(text = "Sector de la empresa = ${empresa.sector}")
     }
 }

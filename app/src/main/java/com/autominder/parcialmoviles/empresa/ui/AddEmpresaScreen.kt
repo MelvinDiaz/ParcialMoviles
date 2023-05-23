@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
@@ -24,7 +25,8 @@ fun AddEmpresaScreen(viewModel: EmpresaViewModel, navController: NavController) 
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         AddEmpresaForm(viewModel, navController)
     }
@@ -35,7 +37,8 @@ fun AddEmpresaForm(viewModel: EmpresaViewModel, navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(8.dp)
+            .padding(8.dp),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
         val name: String by viewModel.name.collectAsState("")
         val sector: String by viewModel.sector.collectAsState("")
@@ -47,12 +50,12 @@ fun AddEmpresaForm(viewModel: EmpresaViewModel, navController: NavController) {
                 ""
             )
         )
-
+        Text(text = "Agregar empresas", style = MaterialTheme.typography.headlineMedium)
         EmpresaName(name) { viewModel.onAddEmpresaChange(id, it, sector) }
         Spacer(modifier = Modifier.padding(8.dp))
         EmpresaSector(sector) { viewModel.onAddEmpresaChange(id, name, it) }
         Spacer(modifier = Modifier.padding(8.dp))
-        EmpresaId(id) { viewModel.onAddEmpresaChange(it.toInt(), sector, name) }
+        EmpresaId(id) { viewModel.onAddEmpresaChange(it.toInt(), name, sector) }
         Button(onClick = {
             viewModel.addEmpresa(newEmpresa)
             navController.popBackStack()
