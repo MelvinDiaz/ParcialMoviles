@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Card
@@ -66,14 +67,17 @@ fun EmpresaCard(empresa: EmpresaDataModel, navController: NavController) {
     Card(
         modifier = Modifier
             .padding(16.dp)
-            .height(30.dp)
-            .fillMaxWidth(),
+            .width(280.dp)
+            .height(50.dp),
         shape = MaterialTheme.shapes.small,
         onClick = {
             navController.navigate("empresa_details_screen/${empresa.id}")
         },
         colors = CardDefaults.cardColors(MaterialTheme.colorScheme.primaryContainer)
     ) {
-        Text(text = empresa.name, color = MaterialTheme.colorScheme.onPrimaryContainer)
+        Text(
+            text = "Nombre de la empresa: ${empresa.name}}",
+            color = MaterialTheme.colorScheme.onPrimaryContainer
+        )
     }
 }

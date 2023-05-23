@@ -50,16 +50,22 @@ fun AddEmpresaForm(viewModel: EmpresaViewModel, navController: NavController) {
                 ""
             )
         )
+        val isEnabled: Boolean by viewModel.addEmpresaEnable.collectAsState(false)
+
         Text(text = "Agregar empresas", style = MaterialTheme.typography.headlineMedium)
         EmpresaName(name) { viewModel.onAddEmpresaChange(id, it, sector) }
         Spacer(modifier = Modifier.padding(8.dp))
         EmpresaSector(sector) { viewModel.onAddEmpresaChange(id, name, it) }
         Spacer(modifier = Modifier.padding(8.dp))
         EmpresaId(id) { viewModel.onAddEmpresaChange(it.toInt(), name, sector) }
-        Button(onClick = {
-            viewModel.addEmpresa(newEmpresa)
-            navController.popBackStack()
-        }) {
+        Button(
+            onClick = {
+                viewModel.addEmpresa(newEmpresa)
+                navController.popBackStack()
+            },
+            enabled = isEnabled
+
+        ) {
             Text(text = "Agregar empresa")
         }
     }

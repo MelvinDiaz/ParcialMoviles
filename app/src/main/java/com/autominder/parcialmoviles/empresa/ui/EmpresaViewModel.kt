@@ -27,26 +27,29 @@ class EmpresaViewModel(
     val id: StateFlow<Int> = _id
     private val _newEmpresa = MutableStateFlow<EmpresaDataModel>(EmpresaDataModel(0, "", ""))
     val newEmpresa: StateFlow<EmpresaDataModel> = _newEmpresa
-
+    private val _addEmpresaEnable = MutableStateFlow<Boolean>(false)
+    val addEmpresaEnable: StateFlow<Boolean> = _addEmpresaEnable
 
     init {
         getEmpresas()
     }
 
-    fun onAddEmpresaChange(id: Int, name: String, sector: String){
+    fun onAddEmpresaChange(id: Int, name: String, sector: String) {
         _id.value = id
         _name.value = name
         _sector.value = sector
 
         _newEmpresa.value = EmpresaDataModel(id, name, sector)
+        _addEmpresaEnable.value = validFields(id, name, sector)
     }
 
+    fun validFields(
+        id: Int, name: String, sector: String
+    ): Boolean = name != "" && id != 0 && sector != ""
 
-    fun addEmpresa(empresa: EmpresaDataModel){
+    fun addEmpresa(empresa: EmpresaDataModel) {
         repository.addEmpresa(empresa)
     }
-
-
 
 
     fun getEmpresas() {
