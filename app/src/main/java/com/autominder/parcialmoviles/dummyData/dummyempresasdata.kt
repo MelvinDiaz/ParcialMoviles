@@ -8,4 +8,9 @@ val dummyEmpresas = mutableListOf<EmpresaDataModel>(
         name = "UCA",
         sector = "Educacion",
     ),
+    EmpresaDataModel(
+        id = 2,
+        name = "UDB",
+        sector = "Educacion",
+    )
 )

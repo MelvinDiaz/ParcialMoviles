@@ -20,6 +20,9 @@ class EmpresaViewModel(
     private val _isLoading = MutableStateFlow<Boolean>(false)
     val isLoding: StateFlow<Boolean> = _isLoading
 
+    init {
+        getEmpresas()
+    }
 
     fun getEmpresas() {
         viewModelScope.launch {
