@@ -66,6 +66,9 @@ fun EmpresaCard(empresa: EmpresaDataModel, navController: NavController) {
             .padding(8.dp)
             .fillMaxWidth(),
         shape = MaterialTheme.shapes.small,
+        onClick = {
+            navController.navigate("empresa_details_screen/${empresa.id}")
+        }
     ) {
         Text(text = empresa.name)
     }

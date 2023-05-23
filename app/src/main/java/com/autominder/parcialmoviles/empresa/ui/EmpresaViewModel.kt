@@ -30,6 +30,10 @@ class EmpresaViewModel(
         }
     }
 
+    fun getEmpresaById(id: Int): EmpresaDataModel? {
+        return repository.getEmpresaById(id)
+    }
+
     companion object {
         val Factory = viewModelFactory {
             initializer {

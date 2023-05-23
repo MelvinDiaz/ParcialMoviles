@@ -6,5 +6,5 @@ class EmpresaRepository(private val empresaDummy: List<EmpresaDataModel>) {
 
     fun getEmpresas() = empresaDummy
 
-
+    fun getEmpresaById(id: Int) = empresaDummy.find { it.id == id }
 }
