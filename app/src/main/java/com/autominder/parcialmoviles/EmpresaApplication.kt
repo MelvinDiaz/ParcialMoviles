@@ -4,8 +4,8 @@ import android.app.Application
 import com.autominder.parcialmoviles.dummyData.dummyEmpresas
 import com.autominder.parcialmoviles.repository.EmpresaRepository
 
-class EmpresaApplication(): Application() {
+class EmpresaApplication() : Application() {
     val empresaRepository: EmpresaRepository by lazy {
-        EmpresaRepository(dummyEmpresas)
+        EmpresaRepository()
     }
 }

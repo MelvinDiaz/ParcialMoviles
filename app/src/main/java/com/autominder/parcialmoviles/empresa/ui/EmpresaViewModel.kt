@@ -19,10 +19,35 @@ class EmpresaViewModel(
     val empresaList: StateFlow<List<EmpresaDataModel>> = _empresaList
     private val _isLoading = MutableStateFlow<Boolean>(false)
     val isLoding: StateFlow<Boolean> = _isLoading
+    private val _name = MutableStateFlow<String>("")
+    val name: StateFlow<String> = _name
+    private val _sector = MutableStateFlow<String>("")
+    val sector: StateFlow<String> = _sector
+    private val _id = MutableStateFlow<Int>(0)
+    val id: StateFlow<Int> = _id
+    private val _newEmpresa = MutableStateFlow<EmpresaDataModel>(EmpresaDataModel(0, "", ""))
+    val newEmpresa: StateFlow<EmpresaDataModel> = _newEmpresa
+
 
     init {
         getEmpresas()
     }
+
+    fun onAddEmpresaChange(id: Int, name: String, sector: String){
+        _id.value = id
+        _name.value = name
+        _sector.value = sector
+
+        _newEmpresa.value = EmpresaDataModel(id, name, sector)
+    }
+
+
+    fun addEmpresa(empresa: EmpresaDataModel){
+        repository.addEmpresa(empresa)
+    }
+
+
+
 
     fun getEmpresas() {
         viewModelScope.launch {

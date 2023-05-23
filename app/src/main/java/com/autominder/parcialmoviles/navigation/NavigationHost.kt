@@ -8,6 +8,7 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
+import com.autominder.parcialmoviles.empresa.ui.AddEmpresaScreen
 import com.autominder.parcialmoviles.empresa.ui.EmpresaDetailsScreen
 import com.autominder.parcialmoviles.empresa.ui.EmpresaViewModel
 import com.autominder.parcialmoviles.empresa.ui.EmpresasScreen
@@ -33,6 +34,9 @@ fun NavigationHost(
             if (empresa != null) {
                 EmpresaDetailsScreen(navController, empresaViewModel, empresa)
             }
+        }
+        composable("add_empresa_screen") {
+            AddEmpresaScreen(empresaViewModel, navController)
         }
     }
 }

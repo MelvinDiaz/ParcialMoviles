@@ -1,10 +1,15 @@
 package com.autominder.parcialmoviles.repository
 
+import com.autominder.parcialmoviles.dummyData.dummyEmpresas
 import com.autominder.parcialmoviles.model.EmpresaDataModel
 
-class EmpresaRepository(private val empresaDummy: List<EmpresaDataModel>) {
+class EmpresaRepository() {
 
-    fun getEmpresas() = empresaDummy
+    fun getEmpresas() = dummyEmpresas
 
-    fun getEmpresaById(id: Int) = empresaDummy.find { it.id == id }
+    fun getEmpresaById(id: Int) = dummyEmpresas.find { it.id == id }
+
+    fun addEmpresa(empresa: EmpresaDataModel) {
+        dummyEmpresas.add(empresa)
+    }
 }
